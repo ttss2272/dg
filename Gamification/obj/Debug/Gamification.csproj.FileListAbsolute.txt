@@ -1,0 +1,4 @@
+F:\Teratech\Quali\Gamification\Gamification\Gamification\bin\Gamification.dll
+F:\Teratech\Quali\Gamification\Gamification\Gamification\bin\Gamification.pdb
+F:\Teratech\Quali\Gamification\Gamification\Gamification\obj\Debug\Gamification.dll
+F:\Teratech\Quali\Gamification\Gamification\Gamification\obj\Debug\Gamification.pdb
