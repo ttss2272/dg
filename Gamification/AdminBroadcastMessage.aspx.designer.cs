@@ -49,15 +49,6 @@ namespace Gamification {
         protected global::System.Web.UI.WebControls.Label lblActivityChallenge;
         
         /// <summary>
-        /// ddActivityChallenge control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddActivityChallenge;
-        
-        /// <summary>
         /// lblStartDate control.
         /// </summary>
         /// <remarks>

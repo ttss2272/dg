@@ -17,6 +17,72 @@
         <link rel="stylesheet" href="css/pie.css"/>
         
         <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/>
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            
+
+            var app = angular.module('sampleapp', [])
+            app.controller('samplecontrol', function ($scope) {
+                $scope.sample = [{
+                    id: '1',
+                    name: 'Suresh Dasari'
+                }, {
+                    id: '2',
+                    name: 'Rohini Alavala'
+                }, {
+                    id: '3',
+                    name: 'Mahendra Dasari'
+                }, {
+                    id: '4',
+                    name: 'Madhav Sai'
+                }, {
+                    id: '5',
+                    name: 'Mahesh Dasari'
+                }, {
+                    id: '6',
+                    name: 'Sateesh Alavala'
+                }];
+            });
+
+            app.controller('samplecontrol2', function ($scope) {
+                $scope.sample = [{
+                    id: '1',
+                    name: 'PriTesh Sortee'
+                }, {
+                    id: '2',
+                    name: 'Kalpesh Katyare'
+                }, {
+                    id: '3',
+                    name: 'Vishal Agrawal'
+                }, {
+                    id: '4',
+                    name: 'Sameer Shinde'
+                }, {
+                    id: '5',
+                    name: 'Priti Fartade'
+                }, {
+                    id: '6',
+                    name: 'Sateesh Alavala'
+                }];
+            });
+            app.controller('conttext', ['$scope', function($scope) {
+      $scope.start = {
+        text: ''};
+        }]);
+
+
+app.controller('conttext', ['$scope', function ($scope) {
+    $scope.end = {
+        text: ''};
+} ]);
+
+</script>
+
+
+
+
+
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +92,7 @@
         <![endif]-->
 </head>
 <body>
-    <form id="form1" runat="server"  role="form" action="" method="post" class="login-form">
+    <form id="form1" runat="server"  role="form" action="" method="post" class="login-form" >
       <!-- Top content -->
         <div class="top-content">
         	
@@ -43,40 +109,44 @@
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                               </div>
                             </div>
-                            <div class="form-bottom">
+                            <div class="form-bottom" data-ng-app="sampleapp">
                             
                        
 			                    
                                     
-                                    <div class="col-lg-12">
-			                        <div class="form-group">
+                                    <div class="col-lg-12" >
+			                        <div class="form-group" data-ng-controller="samplecontrol">
+                                      
 			                        	<label class="form-label" for="form-password">Reward Type</label>
 
-			                            <%--<select class="form-control custom-select" id="sel1">
-    										<option>Reward Type 1</option>
+			                            <select class="form-control custom-select" ng-options=" s.id as s.name for s in sample" ng-model="col" id="sel1">
+    										<option value="">--Select--</option>
+
+                                            <option>Reward Type 1</option>
     										<option>Reward Type 2</option>
-   										</select>--%>
-                                        <asp:DropDownList ID="sel1" runat="server"  class="form-control custom-select">
+   										</select>
+                                        <%--<asp:DropDownList ID="sel1" runat="server"  class="form-control custom-select">
                                         <asp:ListItem>Select</asp:ListItem>
                                         <asp:ListItem>Type 1</asp:ListItem>
                                         <asp:ListItem>Type 2</asp:ListItem>
-                                        </asp:DropDownList>
+                                        </asp:DropDownList>--%>
 
 			                        </div>
                                     </div>
                                     
-                                    <div class="col-lg-12">
-			                        <div class="form-group">
+                                    <div class="col-lg-12" >
+			                        <div class="form-group" data-ng-controller="samplecontrol2">
 			                        	<label class="form-label" for="form-password">Activity/Challenge</label>
-			                            <%--<select class="form-control custom-select" id="sel1">
-    										<option>Challenge 1</option>
+			                            <select class="form-control custom-select" id="sel11" ng-options=" s.id as s.name for s in sample" ng-model="col">
+    										<option value="">---Select---</option>
+                                            <option>Challenge 1</option>
     										<option>Challenge 2</option>
-   										</select>--%>
-                                        <asp:DropDownList ID="ddlChallenge" runat="server"  class="form-control custom-select">
+   										</select>
+                                        <%--<asp:DropDownList ID="ddlChallenge" runat="server"  class="form-control custom-select">
                                         <asp:ListItem>Select</asp:ListItem>
                                         <asp:ListItem>Challenge 1</asp:ListItem>
                                         <asp:ListItem>Challenge 2</asp:ListItem>
-                                        </asp:DropDownList>
+                                        </asp:DropDownList>--%>
 			                        </div>
                                     </div>
                                     
@@ -84,7 +154,8 @@
 			                        <div class="form-group">
 			                    		<label class="form-label" for="form-start-noti">Start Notification</label>
 			                        	<%--<input type="text" name="form-username" placeholder="Notification text comere here" class="form-username form-control" id="form-username">--%>
-                                        <asp:TextBox ID="txtStartNotification" runat="server" placeholder="Notification text comere here" class="form-username form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtStartNotification" runat="server" placeholder="Notification text comere here" class="form-username form-control" ng-model="startNotification"></asp:TextBox>
+                                        <%--<p>{{startNotification}}</p>--%>
 			                        </div>
 			                        </div>
                                     
@@ -92,7 +163,8 @@
 			                        <div class="form-group">
 			                    		<label class="form-label" for="form-end-noti">End Notification</label>
 			                        	<%--<input type="text" name="form-username" placeholder="Notification text comere here" class="form-username form-control" id="form-username">--%>
-                                        <asp:TextBox ID="txtEndNotification" runat="server" placeholder="Notification text comere here" class="form-username form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtEndNotification" runat="server" placeholder="Notification text comere here" class="form-username form-control" ng-model="endNotification"></asp:TextBox>
+                                        <%--<p>{{endNotification}}</p>--%>
 			                        </div>
 			                        </div>                                    
                                                                         
@@ -100,7 +172,8 @@
                                     <div class="form-group">
 			                    		<label class="form-label" for="form-username">Start Date & Time</label>
 			                        	<%--<input type="text" name="form-username" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class"  id="some_class_1">--%>
-                                        <asp:TextBox  runat="server" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class"  id="some_class_1"></asp:TextBox>
+                                        <asp:TextBox  runat="server" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class"  id="some_class_1" ng-model="startDate"></asp:TextBox>
+                                        <p>{{startDate}}</p>
 			                        </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -108,7 +181,8 @@
                                         <%--<asp:Label ID="lblEndDate" runat="server" Text="End Date & Time" class="form-label"></asp:Label>--%>
 			                    		<label class="form-label" for="form-username">End Date & Time</label>
 			                        	<%--<input type="text" name="form-username" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class" id="some_class_2">--%>
-                                        <asp:TextBox  runat="server" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class"  id="some_class_2"></asp:TextBox>
+                                        <asp:TextBox  runat="server" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class"  id="some_class_2" ng-model="endDate"></asp:TextBox>
+                                        <p>{{endDate}}</p>
 			                        </div>
                                     </div>
                                     
@@ -135,11 +209,11 @@
   			
     </form>
 
-    <script src="js/jquery.min.js"></script>
-           <script src="js/index.js"></script>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+           <script src="js/index.js" type="text/javascript"></script>
            
-           <script src="js/jquery.js"></script>
-<script src="js/jquery.datetimepicker.js"></script>
+           <script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery.datetimepicker.js" type="text/javascript"></script>
              <script type="text/javascript">
                  $('#datetimepicker').datetimepicker({
                      dayOfWeekStart: 1,

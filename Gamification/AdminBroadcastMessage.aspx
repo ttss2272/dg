@@ -16,21 +16,59 @@
         <link rel="stylesheet" href="css/style.css"/>
         <link rel="stylesheet" href="css/pie.css"/>
         <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/>
-            
+           <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js" type="text/javascript"></script> 
               <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        
+        <script type="text/javascript">
+            var app = angular.module('broadCastMessage', [])
+            app.controller('samplecontrol', function ($scope) {
+                $scope.sample = [{
+                    id: '1',
+                    name: 'Activity/Challenge1'
+                }, {
+                    id: '2',
+                    name: 'Activity/Challenge2'
+                }, {
+                    id: '3',
+                    name: 'Activity/Challenge3'
+                }, {
+                    id: '4',
+                    name: 'Activity/Challenge4'
+                }, {
+                    id: '5',
+                    name: 'Activity/Challenge5'
+                }, {
+                    id: '6',
+                    name: 'Activity/Challenge7'
+                }];
+            });
+
+            app.controller('conttext', ['$scope', function ($scope) {
+                $scope.start = {
+                    text: ''
+                };
+            } ]);
+
+            app.controller('MyController', function ($scope) {
+                $scope.ButtonClick = function () {
+                    $scope.Message = "Button clicked."
+                }
+            });
+        </script>
+
 
 
     </head>
 
     <body>
-     <form runat="server" role="form" action="" method="post" class="login-form">
+     <form runat="server" role="form" action="" method="post" class="login-form" >
         <!-- Top content -->
-        <div class="top-content">
+        <div class="top-content" >
         	
             <div class="">
                 <div class="container">
@@ -46,7 +84,7 @@
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                               </div>
                             </div>
-                            <div class="form-bottom">
+                            <div class="form-bottom" data-ng-app="broadCastMessage">
                             
                        
 			                   <%-- <form role="form" action="" method="post" class="login-form">--%>
@@ -56,23 +94,25 @@
 			                     		<%--<label class="form-label" for="form-password">Bonus Type</label>--%>
                                         <asp:Label ID="lblBonusType" runat="server" Text="Bonus Type" class="form-label" for="form-password"></asp:Label>
                                        	<%--<textarea class="form-control" rows="1" placeholder="Type message here"></textarea>--%>
-                                        <asp:TextBox ID="txtBonusType" TextMode="MultiLine" Height="100%" placeholder="Type Message here" class="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtBonusType" TextMode="MultiLine" Height="100%" placeholder="Type Message here" class="form-control" runat="server" ng-model="BonusType"></asp:TextBox>
+                                        <p>{{BonusType}}</p>
 			                        </div>
                                     </div>
                                    
                                     <div class="col-lg-12">
-			                        <div class="form-group">
+			                        <div class="form-group" data-ng-controller="samplecontrol">
 			                        	<%--<label class="form-label" for="form-password">Activity/Challenge</label>--%>
                                         <asp:Label ID="lblActivityChallenge" class="form-label" runat="server" for="form-password" Text="Activity/Challenge"></asp:Label>
-			                            <%--<select class="form-control custom-select" id="sel1">
-    										<option>Select 1</option>
+			                            <select class="form-control custom-select" id="sel1" ng-options=" s.id as s.name for s in sample" ng-model="col">
+    										<option value="">---Select---</option>
+                                            <option>Select 1</option>
     										<option>Select 2</option>
-   										</select>--%>
-                                        <asp:DropDownList ID="ddActivityChallenge" class="form-control custom-select" runat="server">
+   										</select>
+                                        <%--<asp:DropDownList ID="ddActivityChallenge" class="form-control custom-select" runat="server">
                                             <asp:ListItem>Select 1</asp:ListItem>
                                             <asp:ListItem>Select 2</asp:ListItem>
                                             <asp:ListItem>Select 3</asp:ListItem>
-                                        </asp:DropDownList>
+                                        </asp:DropDownList>--%>
 			                        </div>
                                     </div>
                                     
@@ -81,7 +121,8 @@
 			                    		<%--<label class="form-label" for="form-username">Start Date & Time</label>--%>
                                         <asp:Label ID="lblStartDate" runat="server" Text="Start Date & Time" class="form-label" for="form-username"></asp:Label>
 			                        	<%--<input type="text" name="form-username" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class"  id="some_class_1">--%>
-                                        <asp:TextBox ID="txtStartDateTime" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class"  runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtStartDateTime" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class"  runat="server" ng-model="startDate"></asp:TextBox>
+                                        <p>{{StartDate}}</p>
 			                        </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -89,7 +130,8 @@
 			                    		<%--<label class="form-label" for="form-username">End Date & Time</label>--%>
                                         <asp:Label ID="lblEndDate" runat="server" Text="End Date & Time" class="form-label" for="form-username"></asp:Label>
 			                        	<%--<input type="text" name="form-username" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class" id="some_class_2">--%>
-                                        <asp:TextBox ID="txtEndDateTime" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtEndDateTime" placeholder="09/11/2015 14:00:38" class="form-username form-control some_class" runat="server" ng-model="endDate"></asp:TextBox>
+                                        <p>{{endDate}}</p>
 			                        </div>
                                     </div>
                                    
@@ -99,7 +141,7 @@
                                          <asp:Button ID="BtnSubmit" class="btn btn-lg btn-info" runat="server" type="submit" Text="Submit" /></div>
                                     
                                      <div class="col-lg-4"><%--<button type="submit" class="btn">Cancel</button>--%> 
-                                         <asp:Button ID="BtnCancel" class="btn btn-lg btn-info" type="submit" runat="server" Text="Cancel" /></div>
+                                         <asp:Button ID="BtnCancel" class="btn btn-lg btn-danger" type="submit" runat="server" Text="Cancel" /></div>
 			                    <%--</form>--%>
 		                    </div>
                         </div>
