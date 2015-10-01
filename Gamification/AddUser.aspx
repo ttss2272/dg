@@ -27,7 +27,7 @@
    
 </head>
     <body class="user-body">
-    <form runat="server" class="form">
+    <form runat="server" role="form" action="" method="post" class="login-form">
         <!-- Top content -->
         <div class="top-content">
         	
@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="col-lg-8 col-lg-offset-1">
                                        		<%--<input type="text" class="form-control col-lg-10" />--%>
-                                            <asp:TextBox ID="txtFullName" runat="server" class="form-control col-lg-10"></asp:TextBox>
+                                            <asp:TextBox ID="txtFullName" runat="server" class="form-control col-lg-10" placeholder="Full Name"></asp:TextBox>
 			                        	</div>
                                     </div>
                                     <br/>
@@ -69,7 +69,7 @@
                                         </div>
                                         <div class="col-lg-8 col-lg-offset-1">
                                        		<%--<input type="text" class="form-control col-lg-10" />--%>
-                                            <asp:TextBox ID="TextBox1" runat="server" class="form-control col-lg-10"></asp:TextBox>
+                                            <asp:TextBox ID="txtScreenName" runat="server" class="form-control col-lg-10" placeholder="Screen Name"></asp:TextBox>
 			                        	</div>
                                     </div>
                                     <br/>
@@ -82,9 +82,10 @@
 			                        	</div>
                                     </div>
                                     <br/>
-                                    <div class="row">
-                                    	<div class="col-lg-12">
-			                        		<div class="form-group">
+                                    
+                                    <br />
+                                    <div class="row form-group">
+                                    	
                                     			<div class="col-lg-3">
 			                        				<label class="form-label" for="form-password">Team Description</label>
 			                            		</div>
@@ -94,15 +95,15 @@
     													<option>option 1</option>
     													<option>option 2</option>
    													</select>--%>
-                                                    <asp:DropDownList ID="DropDownList1" runat="server" class="select">
+                                                    <asp:DropDownList ID="sel1" runat="server" class="select">
                                                     <asp:ListItem Value="-1">Select</asp:ListItem>
                                                     <asp:ListItem>PriTesh</asp:ListItem>
                                                     <asp:ListItem>Sortee</asp:ListItem>
                                                     </asp:DropDownList>
                                         		</div>
                                                 </div>
-			                        		</div>
-                                    	</div>
+			                        		
+                                    	
                                     </div>
                                     <br/>
                                     <div class="row seprater">
@@ -110,11 +111,12 @@
                                     <br/>
                                     <div class="row">
                                      	<div class="col-lg-2 col-lg-offset-8">
-                                        <button type="submit" class="btn">Submit</button>
-                                             <asp:Button ID="btnSubmit" runat="server" Text="Submit" type="submit" class="btn submit"/>
+                                        <%--<button type="submit" class="btn">Submit</button>--%>
+                                             
+                                             <asp:Button ID="btnSubmit" runat="server" Text="Submit" type="submit" class="btn btn-lg btn-info"/>
                                         </div>
                                      	<div class="col-lg-2">
-                                        <button type="submit" class="btn btn-white">Cancel</button>
+                                        <%--<button type="submit" class="btn btn-white">Cancel</button>--%>
                                         <asp:Button ID="btnCancel" runat="server" Text="Cancel" type="submit" class="btn btn-white btn-lg"/>
                                         </div>
                                     </div>
