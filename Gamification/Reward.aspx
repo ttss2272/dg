@@ -194,7 +194,7 @@ app.controller('conttext', ['$scope', function ($scope) {
                                       <asp:Button ID="btnSubmit" runat="server" Text="Submit" class="btn btn-lg btn-info" />
                                       </div>
                                      <div class="col-lg-4"><%--<button type="submit" class="btn">Cancel</button>--%>
-                                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" class="btn btn-lg btn-white" />
+                                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" class="btn btn-lg btn-danger" />
                                      </div>
 			                      </div>
 		                    </div>

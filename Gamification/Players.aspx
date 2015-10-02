@@ -24,6 +24,9 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js" type="text/javascript"></script>
+
 </head>
 <body>
     <form id="form1" runat="server"  role="form" action="" method="post" class="login-form">
@@ -51,12 +54,13 @@
                 	<a class="main-active" href="#">Design Games</a>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-4 main-right">
-                	<a class="white" href="#">Design Games</a>
+                	<a class="white" href="#">Design New Games</a>
                 </div>
             </div>
         </div>
         
         <div class="bg-gray">
+        
         	<div class="col-lg-2">
             	<span class="pull-right">
                 <br/>
@@ -73,7 +77,7 @@
             </div>
             
             <div class="col-lg-10">
-            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="example" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Name</th>
